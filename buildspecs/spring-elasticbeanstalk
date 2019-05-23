@@ -1,10 +1,15 @@
+#github reop for app at: https://github.com/btkruppa/basic-spring-boot-dev-ops
 version: 0.2
 
 phases:
+  install:
+    runtime-versions:
+      java: openjdk8
   post_build:
     commands:
-      - mvn -Dmaven.test.skip=true clean package
+      - cd demo
+      - mvn clean package
 artifacts:
   files:
     - '**/*'
-  base-directory: 'target'
+  base-directory: 'demo/target'
