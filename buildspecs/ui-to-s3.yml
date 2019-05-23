@@ -1,27 +1,16 @@
-version: 0.1
-environment_variables:
-    plaintext:
-        S3_BUCKET: "demo-bucket"
+#pulled from: https://github.com/btkruppa/angular-redux-demo
+version: 0.2
+
 phases:
-    install:
-        commands:
-            - echo Installing source NPM dependencies...
-            - npm install
-    build:
-        commands:
-            - echo Build started on `date`
-            - npm run build
-    post_build:
-        commands:
-            - echo "$CODEBUILD_BUILD_SUCCEEDING"
-            # if build succeeds copy the dist folder into the s3 bucket
-            - |
-                if [ "$CODEBUILD_BUILD_SUCCEEDING" = "1" ]; then
-                    aws s3 cp "dist" "s3://${S3_BUCKET}" "--recursive";
-                    echo "Build completed on date";
-                fi
+  install:
+    runtime-versions:
+      nodejs: 8
+    commands:
+      - npm install
+  build:
+    commands:
+      - npm run build
 artifacts:
-    files:
-        - '**/*'
-    base-directory: 'dist*'
-    discard-paths: yes
+  files:
+    - '**/*'
+  base-directory: 'dist/angular-redux-demo'
