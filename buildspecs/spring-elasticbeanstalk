@@ -1,0 +1,10 @@
+version: 0.2
+
+phases:
+  post_build:
+    commands:
+      - mvn -Dmaven.test.skip=true clean package
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'target'
