@@ -1,4 +1,5 @@
 #come from https://github.com/1810-java-blake/demos/tree/master/week4/LeagueOfLegendsApi
+# this likely will not work anymore because the buildspec needs to specify the runtime in the current version of codebuild
 version: 0.2
 
 phases:
